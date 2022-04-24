@@ -3,7 +3,15 @@ import Event from './Event';
 
 export default class EventManagerFactory{
     static create(events, types) {
-        // implement your code here...
-        return new EventManager();
+        let eventObjects = [];
+        const validEvents = events.filter(event => types.includes(event.type));
+        
+        for (const validEvent of validEvents) {
+            eventObjects.push(
+                new Event(validEvent.second, validEvent.type, validEvent.message)
+            );
+        }
+        
+        return new EventManager(eventObjects);  
     }
 };

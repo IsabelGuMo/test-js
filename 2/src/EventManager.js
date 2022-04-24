@@ -1,6 +1,15 @@
 export default class EventManager{
+    constructor(events) {
+        this.events = events;
+    }
+    
     run() {
-        // implement your code here...
-        console.log("RUNNING");
+       for (const event of this.events) {
+           setTimeout(
+               () => event.execute(),
+               event.second * 1000
+            );
+       }
+
     }
 };
